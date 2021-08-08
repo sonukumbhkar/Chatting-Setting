@@ -27,6 +27,5 @@ urlpatterns = [
     path('', base_views.HomePage.as_view(), name='home'),
     path('accounts/', include(accounts_urls)),
     path('chat/', include(chat_urls)),
-    path('captcha/', include('captcha.urls')),
-
+    
 ]

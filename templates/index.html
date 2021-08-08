@@ -16,12 +16,29 @@
 	    
 		{% else %}
 		    <h1 class="heading" style="text-align: center;">Welcome Back, {{ user }}!</h1><br><hr style="background: rgb(190, 255, 39);">
-		    <h2 class="normal"style="text-align: center; color: rgb(255, 0, 0);">Yehh You Are In</h2><br>
+		   
 		    <h4 class="normal" style="text-align: center;" >Let's Do Something</h4><br><br>
 
-		  <div style="text-align: center;"><a href="{% url 'chat:all' %}" class="link" style="margin-right: 5%;">Let's Chat</a> 
+		  <div style="text-align: center;">
+			<form method="POST" >
+				{% csrf_token %}
+				{{ form.as_p }}
+			<div>Username: {{ user }} <br>
+			<div> Gender : <input type="radio" id="gender"  value="gender">
+				<label for="gender">Male</label>
+				<input type="radio" id="ge"  value="ge">
+				<label for="ge">Female</label>
+				<br>
+			<div>Contact: <input type="number" value="number" style="border-radius: 10px; background-color: transparent;"> <br> <br>
+			<div>Email: <input type="email" value="" style="border-radius: 10px; background-color: transparent;"> </div>
+			<br>
+			<div>
+				<a href="{% url 'chat:all' %}" class="link">Update</a>
+			</form> <br><br>
+
+			<a href="{% url 'chat:all' %}" class="link" style="margin-right: 5%;">Let's Chat</a> 
 		    <a href="{% url 'accounts:logout' %}" class="link">Logout</a> 
-		   
+		    
 		    <br><hr style="background: rgb(190, 255, 39);"><br>
 			
             </div>
