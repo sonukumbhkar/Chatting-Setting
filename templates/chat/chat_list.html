@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Chatting-setting- All Chatting
+{% endblock title %}
+
+{% block content %}
+    <a href="/chat"><button class="btn btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i>
+    Rerfresh For Any New Chats</button></a><br><br><br>
+
+    {% for chat in object_list %}
+
+
+    	<div class="chat" style="width: 80%; background: rgb(114, 13, 197); box-shadow: 2px 0px 25px 20px rgb(2, 2, 2);">
+    		{% if chat.user.is_superuser %}
+    		    
+
+    		    <small class="chat-user-special" style="color:rgb(0, 255, 21)"> {{ chat.user }} - Admin </small>
+
+    		
+    		{% else %}
+
+						<small class="chat-user-special"> {{ chat.user }} </small>    		    
+
+    		{% endif %}
+    		<p><b class="chat-content">{{ chat|linebreaks }}</b></p>
+    		<small class="chat-date">{{ chat.posted_at }}</small>
+    	</div><br><br>
+
+    {% empty %}
+    <h1 class="heading">Yehh you are first here |</h1><br>
+
+    {% endfor %}
+    <br><a href="{% url 'chat:new' %}"><button class="btn btn-outline-primary">Write Message</button></a>
+{% endblock content %}

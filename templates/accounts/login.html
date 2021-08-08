@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Chatting-setting - Login 
+{% endblock title %}
+
+
+{% block content %}
+
+		<div class="col">
+			
+				<h4 style="text-align: center;">Welcome Back To Chatting-setting !</h4><br><br>
+			
+			
+		
+				<form method="POST"  onsubmit="return checkform(this);" style="text-align: center;">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<div class="capbox" style="background: transparent;
+					
+					border-width: 2px 2px 2px 20px;
+					box-sizing: border-box;
+					-moz-box-sizing: border-box;
+					-webkit-box-sizing: border-box;
+					display: inline-block;
+					
+					padding: 5px 8px 5px 8px;
+					border-radius: 4px 4px 4px 4px;">
+					
+					<div id="CaptchaDiv" style="color: #000000;
+					font: normal 25px Impact, Charcoal, arial, sans-serif;
+					font-style: italic;
+					text-align: center;
+					vertical-align: middle;
+					background-color: #FFFFFF;
+					user-select: none;
+					display: inline-block;
+					padding: 3px 14px 3px 8px;
+					margin-right: 4px;
+					border-radius: 4px;"></div><br><br>
+					
+					<div class="capbox-inner" style="font: bold 12px arial, sans-serif;
+					color: #000000;
+					background-color: #E3E3E3;
+					margin: 0px auto 0px auto;
+					padding: 3px 10px 5px 10px;
+					border-radius: 4px;
+					display: inline-block;
+					vertical-align: middle;">
+					Type the number:<br>
+					
+					<input type="hidden" id="txtCaptcha">
+					<input type="text" name="CaptchaInput" id="CaptchaInput" size="15" style="border: #38B000 2px solid;
+					margin: 3px 0px 1px 0px;
+					width: 105px;"><br>
+					
+					</div>
+					</div>
+					<br><br>
+					<!-- END CAPTCHA -->
+					<script type="text/javascript">
+					
+						// Captcha Script
+						
+						function checkform(theform){
+						var why = "";
+						
+						if(theform.CaptchaInput.value == ""){
+						why += " Please Enter CAPTCHA Answer\n";
+						}
+						if(theform.CaptchaInput.value != ""){
+						if(ValidCaptcha(theform.CaptchaInput.value) == false){
+						why += " The CAPTCHA Code Does Not Match.\n";
+						}
+						}
+						if(why != ""){
+						alert(why);
+						return false;
+						}
+						}
+						var sum = 0;
+						var a = Math.ceil(Math.random() * 9)+ '';
+						var b = '+';
+						var c = Math.ceil(Math.random() * 9)+ '';
+						var d = '+';
+						var e = Math.ceil(Math.random() * 9)+ '';
+						sum = parseInt(a)+parseInt(c)+parseInt(e)
+						var code = a + b + c + d + e;
+						document.getElementById("txtCaptcha").value = code;
+						document.getElementById("CaptchaDiv").innerHTML = code;
+						
+						// Validate input against the generated number
+						function ValidCaptcha(){
+						
+						var str2 = document.getElementById('CaptchaInput').value;
+						if (sum == parseInt(str2)){
+						return true;
+						}else{
+						return false;
+						}
+						}
+						
+						// Remove the spaces from the entered and generated code
+						
+						</script>
+					<input type="submit" value='Login' class="btn btn-outline-primary">
+				</form>
+				
+			</div><br><br><br><br><br>
+			
+			
+{% endblock content %}
