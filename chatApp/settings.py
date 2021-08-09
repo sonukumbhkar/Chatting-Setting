@@ -25,8 +25,7 @@ SECRET_KEY = '6u*h^$w1ielwjw%797zzr8**hmbh@!_mc(f7p@qh6x$e69zufy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True  # Will Turn  False when ready for deployment
 
-ALLOWED_HOSTS = ["chat-set.herokuapp.com"
-]
+ALLOWED_HOSTS = ["chat-set.herokuapp.com",'127.0.0.1']
 
 
 # Application definition
@@ -40,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'markdown_deux',
     'chat',
+    'chatApp',
     'accounts',
     
 ]
