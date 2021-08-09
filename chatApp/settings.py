@@ -25,7 +25,7 @@ SECRET_KEY = '6u*h^$w1ielwjw%797zzr8**hmbh@!_mc(f7p@qh6x$e69zufy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False  # Will Turn  False when ready for deployment
 
-ALLOWED_HOSTS = ['localhost',   "127.0.0.1"]
+ALLOWED_HOSTS = ["chat-set.herokuapp.com", "127.0.0.1"]
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -126,3 +127,4 @@ USE_TZ = True
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
